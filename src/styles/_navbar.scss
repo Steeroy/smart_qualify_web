@@ -1,0 +1,224 @@
+// src/styles/_navbar.scss
+@use 'variables' as v;
+@import 'mixins';
+
+.nav-container {
+  background-color: v.$smartQualifyWhite;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow-x: hidden; // Prevent horizontal scrolling
+  box-shadow: 0 2px 4px rgba(v.$smartQualifyBlack, 0.1);
+  font-family: var(--font-poppins);
+
+  .nav-web-wrapper {
+    width: 100%;
+    padding: 0 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (min-width: 1440px) {
+      padding: 0 12rem; // Bigger screens (192px)
+    }
+
+    @media (min-width: 1025px) {
+      padding: 0 8rem; // Bigger screens (128px)
+    }
+
+    @media (max-width: 1024px) {
+      padding: 0 3rem; // Tablets (48px)
+    }
+
+    @media (max-width: 768px) {
+      padding: 0 1.25rem; // Phones (20px)
+    }
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+
+    img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
+    span {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: v.$smartQualifyGreen;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+      &:hover {
+        color: v.$smartQualifyNavy;
+      }
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem; // Reduced gap to fit better
+    align-items: center;
+    flex-grow: 1; // Allow links to take available space
+    justify-content: end;
+
+    a {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: v.$smartQualifyNavy;
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: v.$smartQualifyGreen;
+      }
+    }
+  }
+
+  .join-now {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    height: 48px;
+    background-color: v.$smartQualifyGreen;
+    color: v.$smartQualifyWhite !important;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: v.$borderRadiusMd;
+    transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out;
+
+    &:hover {
+      background-color: v.$smartQualifyBlueDark;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &.mobile {
+      background-color: v.$smartQualifyWhite;
+      color: v.$smartQualifyGreen !important;
+      border: 2px solid v.$smartQualifyGreen;
+
+      &:hover {
+        background-color: v.$smartQualifyGreen;
+        color: v.$smartQualifyWhite !important;
+      }
+    }
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  .nav-mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: v.$smartQualifyNavy;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    overflow-y: auto;
+
+    .close-menu {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 2rem;
+
+      svg {
+        width: 40px;
+        height: 40px;
+        color: v.$smartQualifyWhite;
+      }
+    }
+
+    .mobile-links {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 2rem;
+      flex-grow: 1;
+
+      a {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: v.$smartQualifyWhite;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: v.$smartQualifyGreen;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-logo {
+      gap: 0.25rem;
+
+      img {
+        width: 48px;
+        height: 48px;
+      }
+
+      span {
+        font-size: 1.25rem;
+      }
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .join-now:not(.mobile) {
+      display: none;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .nav-links {
+      gap: 1rem; // Tighter gap for tablets
+      a {
+        font-size: 0.9rem;
+      }
+    }
+
+    .join-now {
+      padding: 0 15px;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo {
+      span {
+        font-size: 1.2rem; // Smaller logo text on very small screens
+      }
+    }
+  }
+}

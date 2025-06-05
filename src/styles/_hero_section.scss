@@ -1,0 +1,421 @@
+// src/styles/_hero_section.scss
+@use 'variables' as v;
+
+.hero-section {
+  min-height: calc(100vh - 96px); // Full viewport minus navbar height
+  background: linear-gradient(
+    135deg,
+    v.$smartQualifyLight 30%,
+    rgba(v.$smartQualifyGreen, 0.1) 100%
+  ); // Subtle gradient for depth
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; // Prevent any overflow
+  width: 100%;
+  max-width: 100vw;
+  padding-top: 96px; // Match navbar height
+  font-family: var(--font-poppins);
+
+  // Decorative background elements
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(
+      circle,
+      rgba(v.$smartQualifyGreen, 0.3) 0%,
+      transparent 70%
+    );
+    z-index: 0;
+    opacity: 0.5;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+      circle,
+      rgba(v.$smartQualifyBlueDark, 0.2) 0%,
+      transparent 70%
+    );
+    z-index: 0;
+    opacity: 0.4;
+    animation: float 8s ease-in-out infinite reverse;
+  }
+
+  .hero-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 8rem; // Laptops (128px)
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1; // Above decorative elements
+    gap: 2rem;
+
+    @media (min-width: 1440px) {
+      padding: 0 12rem; // Bigger screens (192px)
+    }
+
+    @media (max-width: 1024px) {
+      padding: 0 3rem; // Tablets (48px)
+      flex-direction: column; // Stack vertically on tablets
+      gap: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0 1.25rem; // Phones (20px)
+    }
+  }
+
+  .hero-content {
+    flex: 1;
+    max-width: 600px; // Limit text width for readability
+    text-align: left;
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: v.$smartQualifyNavy;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(
+        to right,
+        v.$smartQualifyNavy,
+        v.$smartQualifyGreen
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent; // Gradient text effect
+      animation: fadeInText 1s ease-out;
+
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
+        text-align: center;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: v.$smartQualifyGray;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+        text-align: center;
+      }
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+
+      @media (max-width: 768px) {
+        justify-content: center;
+      }
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: v.$borderRadiusLg;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(v.$smartQualifyBlack, 0.2);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+
+        // Shine effect on hover
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(v.$smartQualifyWhite, 0.4),
+            transparent
+          );
+          transition: left 0.4s ease;
+          z-index: -1;
+        }
+
+        &:hover::before {
+          left: 100%;
+        }
+
+        &.download-btn {
+          background-color: v.$smartQualifyGreen;
+          color: v.$smartQualifyWhite;
+
+          &:hover {
+            background-color: v.$smartQualifyLightGreen;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(v.$smartQualifyGreen, 0.4);
+          }
+        }
+
+        &.calculator-btn {
+          background-color: v.$smartQualifyInfoBlue;
+          color: v.$smartQualifyWhite;
+
+          &:hover {
+            background-color: v.$smartQualifyBlueDark;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(v.$smartQualifyInfoBlue, 0.4);
+          }
+        }
+      }
+    }
+  }
+
+  .hero-image {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative; // For positioning decorative elements
+    z-index: 1;
+
+    // Main image styling
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: v.$borderRadiusLg;
+      transition: transform 0.4s ease, filter 0.4s ease;
+      filter: brightness(1.05); // Slight brightness for vibrancy
+      z-index: 2; // Ensure image is above background effects
+
+      &:hover {
+        transform: scale(1.1) translateY(-5px);
+        filter: brightness(1.1)
+          drop-shadow(0 4px 12px rgba(v.$smartQualifyNavy, 0.3));
+      }
+    }
+
+    // Organic, roundish 3D background
+    &::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: -40px;
+      width: 130%;
+      height: 130%;
+      background: radial-gradient(
+          circle at 40% 30%,
+          rgba(v.$uj-orange, 0.4) 0%,
+          transparent 60%
+        ),
+        radial-gradient(
+          circle at 70% 60%,
+          rgba(v.$nmu-blue, 0.3) 0%,
+          transparent 50%
+        ),
+        radial-gradient(
+          circle at 30% 80%,
+          rgba(v.$nmu-yellow, 0.35) 0%,
+          transparent 55%
+        );
+      z-index: -1;
+      animation: float3D 7s ease-in-out infinite;
+      filter: blur(20px); // Soft edges for cloud-like effect
+      opacity: 0.7;
+    }
+
+    // Additional 3D layer for depth
+    &::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -30px;
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(
+          circle at 20% 40%,
+          rgba(v.$wits-navy, 0.3) 0%,
+          transparent 50%
+        ),
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(v.$ufs-red, 0.25) 0%,
+          transparent 50%
+        );
+      z-index: -1;
+      animation: float3D 5s ease-in-out infinite reverse;
+      filter: blur(15px);
+      opacity: 0.6;
+    }
+
+    // Sparkles
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(
+        circle,
+        v.$smartQualifyLightGreen 0%,
+        transparent 70%
+      );
+      border-radius: 50%;
+      z-index: 0;
+      opacity: 0;
+      animation: twinkle 2s infinite;
+
+      &:nth-child(1) {
+        top: 10%;
+        left: 15%;
+        animation-delay: 0s;
+      }
+      &:nth-child(2) {
+        top: 70%;
+        left: 85%;
+        animation-delay: 0.5s;
+      }
+      &:nth-child(3) {
+        top: 30%;
+        right: 10%;
+        animation-delay: 1s;
+      }
+    }
+
+    // Responsive adjustments
+    @media (max-width: 1024px) {
+      max-width: 400px;
+
+      &::before {
+        top: -20px;
+        left: -30px;
+        width: 120%;
+        height: 120%;
+        filter: blur(15px);
+      }
+
+      &::after {
+        top: -15px;
+        left: -20px;
+        width: 110%;
+        height: 110%;
+        filter: blur(12px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      max-width: 300px;
+
+      &::before {
+        top: -15px;
+        left: -20px;
+        width: 110%;
+        height: 110%;
+        filter: blur(12px);
+      }
+
+      &::after {
+        top: -10px;
+        left: -15px;
+        width: 100%;
+        height: 100%;
+        filter: blur(10px);
+      }
+
+      .sparkle {
+        width: 8px;
+        height: 8px;
+      }
+    }
+  }
+}
+
+// Updated animation for 3D effect
+@keyframes float3D {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(10px, -10px) scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+// Keyframe animations for decorative elements
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

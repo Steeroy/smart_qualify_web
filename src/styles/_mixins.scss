@@ -1,0 +1,24 @@
+// src/styles/_mixins.scss
+@mixin button($bg-color, $hover-bg, $text-color: $smartQualifyWhite) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+
+  &:hover {
+    background-color: $hover-bg;
+    border-color: $smartQualifyWhite;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

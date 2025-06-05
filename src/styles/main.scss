@@ -1,0 +1,45 @@
+@use './variables' as v;
+
+:root {
+  --smartQualifyNavy: #{v.$smartQualifyNavy};
+  --smartQualifyGreen: #{v.$smartQualifyGreen};
+  --smartQualifyLightGreen: #{v.$smartQualifyLightGreen};
+  --smartQualifyWhite: #{v.$smartQualifyWhite};
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; // Ensures padding/margins don’t cause overflow
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 100%; // Prevent container from exceeding viewport
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 auto; // Laptops (128px)
+
+  @media (min-width: 1440px) {
+    padding: 0 auto; // Bigger screens (192px)
+  }
+
+  @media (max-width: 1024px) {
+    padding: 0 auto; // Tablets (48px)
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 auto; // Phones (20px)
+  }
+}
+
+@import './mixins';
+@import './navbar';
+@import './hero_section';
+@import './features_section';
+@import './universities_section';
+@import './careers_section';
+@import './testimonials_section';
+@import './cta_section';
+@import './footer_section';

@@ -1,0 +1,153 @@
+// src/styles/_cta_section.scss
+@use 'variables' as v;
+
+.cta-section {
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+  font-family: var(--font-poppins);
+  width: 100%;
+  max-width: 100vw;
+  isolation: isolate;
+
+  .cta-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 8rem;
+    position: relative;
+    z-index: 1;
+
+    @media (min-width: 1440px) {
+      padding: 0 12rem;
+    }
+
+    @media (max-width: 1024px) {
+      padding: 0 3rem;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0 1.25rem;
+    }
+  }
+
+  .parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      v.$uj-orange 0%,
+      v.$nmu-blue 50%,
+      v.$smartQualifyGreen 100%
+    );
+    background-size: 200% 200%;
+    animation: gradientPulse 10s ease-in-out infinite;
+    z-index: -1;
+    transform: translateZ(-1px) scale(1.5); // Parallax effect
+    opacity: 0.8;
+
+    @keyframes gradientPulse {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: v.$smartQualifyWhite;
+
+    .cta-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(v.$smartQualifyBlack, 0.3);
+
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
+      }
+    }
+
+    .cta-subtitle {
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      color: rgba(v.$smartQualifyWhite, 0.9);
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .cta-button {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: v.$smartQualifyWhite;
+        border: none;
+        border-radius: v.$borderRadiusLg;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.3s ease;
+
+        img {
+          max-height: 40px; // Constrain Image height
+          width: auto;
+        }
+
+        .button-text {
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        &.app-store {
+          background: rgba(v.$smartQualifyWhite, 0.9);
+          &:hover {
+            background: rgba(v.$smartQualifyWhite, 0.9);
+          }
+        }
+
+        &.google-play {
+          background: rgba(v.$smartQualifyWhite, 0.9);
+          &:hover {
+            background: rgba(v.$smartQualifyWhite, 0.9);
+          }
+        }
+
+        @media (max-width: 768px) {
+          padding: 0.5rem 1rem;
+          gap: 0.5rem;
+
+          img {
+            max-height: 32px;
+          }
+
+          .button-text {
+            font-size: 0.875rem;
+          }
+        }
+      }
+    }
+  }
+}

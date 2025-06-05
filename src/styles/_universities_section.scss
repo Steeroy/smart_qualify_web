@@ -1,0 +1,147 @@
+// src/styles/_universities_section.scss
+@use 'variables' as v;
+
+.universities-section {
+  background: v.$smartQualifyLight;
+  padding: 5rem 0;
+  font-family: var(--font-poppins);
+  overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
+
+  .universities-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 8rem;
+
+    @media (min-width: 1440px) {
+      padding: 0 12rem;
+    }
+
+    @media (max-width: 1024px) {
+      padding: 0 3rem;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0 1.25rem;
+    }
+  }
+
+  .loading-message,
+  .error-message {
+    text-align: center;
+    color: v.$smartQualifyNavy;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 2rem;
+  }
+
+  .universities-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: v.$smartQualifyNavy;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, v.$uj-orange, v.$nmu-blue);
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  .universities-carousel {
+    position: relative;
+    padding: 2rem 0;
+
+    // Slick slider overrides
+    .slick-track {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .slick-slide {
+      padding: 0 1rem;
+      height: auto;
+      display: flex;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+
+      &:not(.slick-active) {
+        opacity: 0.7;
+        transform: scale(0.9);
+      }
+
+      &.slick-active {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .university-item {
+      flex: 1;
+      padding: 1.5rem;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      .university-logo {
+        object-fit: contain;
+      }
+
+      .university-name {
+        font-size: 1rem;
+        text-align: center;
+        color: v.$smartQualifyNavy;
+        margin-top: 0.75rem;
+        font-weight: 600;
+        text-shadow: 0 1px 2px rgba(v.$smartQualifyBlack, 0.05);
+      }
+    }
+
+    @media (max-width: 768px) {
+      gap: 1.5rem;
+      padding: 0.5rem 0;
+    }
+  }
+
+  .universities-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+
+    .stat-item {
+      text-align: center;
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: v.$smartQualifyGreen;
+        display: block;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: v.$smartQualifyGray;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+}
