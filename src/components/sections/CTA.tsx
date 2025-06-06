@@ -56,8 +56,8 @@ export default function CTA() {
             Unlock your future with personalized university and career guidance.
             Download the app to start your journey today!
           </motion.p>
-          {/* <motion.div className="cta-buttons" variants={itemVariants}>
-            <Link
+          <motion.div className="cta-buttons" variants={itemVariants}>
+            {/* <Link
               href="https://www.apple.com/app-store/"
               passHref
               target="_blank"
@@ -77,8 +77,12 @@ export default function CTA() {
                   priority
                 />
               </motion.button>
-            </Link>
-            <Link href="https://play.google.com/store" passHref target="_blank">
+            </Link> */}
+            <Link
+              href="https://play.google.com/store/apps/details?id=com.smartqualify.example"
+              passHref
+              target="_blank"
+            >
               <motion.button
                 className="cta-button google-play"
                 variants={buttonVariants}
@@ -95,7 +99,7 @@ export default function CTA() {
                 />
               </motion.button>
             </Link>
-          </motion.div> */}
+          </motion.div>
         </motion.div>
       </div>
     </section>
