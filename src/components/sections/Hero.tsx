@@ -7,6 +7,22 @@ import images from '@/assets/images/images';
 import { sizes } from '@/configuration/sizes';
 
 export default function Hero() {
+  // Handle smooth scrolling
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   return (
     <section
       className="hero-section"
@@ -27,13 +43,14 @@ export default function Hero() {
           </p>
           <div className="button-group">
             <motion.a
-              href="https://smart-qualify-assets.s3.af-south-1.amazonaws.com/applications/smart-qualify.apk" // Replace with actual App Store link
+              href="#cta" // Replace with actual App Store link
               target="_blank"
               rel="noopener noreferrer"
               className="download-btn"
               whileHover="hover"
               whileTap="tap"
               aria-label="Download Smart Qualify App"
+              onClick={(e) => handleScroll(e, '#cta')}
             >
               Download App
             </motion.a>
