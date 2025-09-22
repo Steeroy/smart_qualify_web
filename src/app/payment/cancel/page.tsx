@@ -3,6 +3,8 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+export const dynamic = 'force-dynamic';
+
 export default function PaymentCancelPage() {
   useEffect(() => {
     // Auto-close for mobile apps after 5 seconds
@@ -41,8 +43,6 @@ export default function PaymentCancelPage() {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-
-
         <motion.h1 
           className="payment-title"
           initial={{ opacity: 0, y: 20 }}
