@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 
-export default function PaymentSuccessPage() {
+export const dynamic = 'force-dynamic';
+
+function PaymentContent() {
   const searchParams = useSearchParams();
   const template = searchParams?.get('template') || null;
 
@@ -42,7 +44,6 @@ export default function PaymentSuccessPage() {
   };
 
   return (
-    <div className="payment-page success">
       <motion.div
         className="payment-card"
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -116,6 +117,15 @@ export default function PaymentSuccessPage() {
           <span>Smart Qualify - CV Template Purchase</span>
         </motion.div>
       </motion.div>
+  );
+}
+
+export default function PaymentSuccessPage() {
+  return (
+    <div className="payment-page success">
+      <Suspense fallback={<div>Loading...</div>}>
+        <PaymentContent />
+      </Suspense>
     </div>
   );
 }
